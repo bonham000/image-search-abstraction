@@ -5,9 +5,28 @@ var port = process.env.PORT;
 var fs = require('fs');
 var http = require('http');
 var request = require('request');
-var prettyjson = require('prettyjson');
+var mongodb = require('mongodb');
 
 var app = express();
+
+var MongoClient = mongodb.MongoClient;
+// Local url:
+//var url = 'mongodb://localhost:27017/image-search-abstraction';
+// mLab hosted url:
+var url = "mongodb://heroku:heroku123@ds023303.mlab.com:23303/image-search-abstraction";
+
+MongoClient.connect(url, function(err, db) {
+    
+    if (err) {
+        console.log("Unable to connect to the database");
+    }
+    else {
+        console.log("Connection established to " + url);
+        
+        db.close();
+    }
+    
+})
 
 // Serve static files:
 app.use(express.static(__dirname + '/public'));
@@ -21,8 +40,9 @@ app.get('/', function(req, res) {
 // Route for image search queries:
 app.get("/api", function(req, res) {
     
-    // var input = req.params;
-    // var query = input[0].slice(1);
+    // Get time at this instance and convert to a date variable;
+    var unix = Math.round(+new Date()/1000);
+    var date = new Date(unix * 1000);
     
     // Query string example: Http://baseurl.com/api?imagesearch= "Your query here" &offset= "Your offset here"
     
@@ -35,11 +55,26 @@ app.get("/api", function(req, res) {
     
     var arr = [];
     var resultObj = {};
-
     
     var apiId = "008924517014194673499%3Atkjerk2whko";
     var apiKey = "AIzaSyAk_Xhchp5zIzikREMeAbnNPnyL6bS6sDE";
     var requestUrl = "https://www.googleapis.com/customsearch/v1?q=" + query + "&searchType=image&num=10&start=" + offset + "&cx=" + apiId + "&key=" + apiKey;
+    
+    // save query to database collection as a new entry object with a timestamp;
+    
+    MongoClient.connect(url, function(err, db) {
+        
+        if (err) {
+            console.log("Could not connect.");
+        }
+        else {
+            db.collection('recent').insertOne( {
+                "search query" : query,
+                "timestamp" : date
+            });
+        }
+        
+    })
     
     request(requestUrl, function (err, response, body) {
         
@@ -58,22 +93,37 @@ app.get("/api", function(req, res) {
                         arr[i] = resultObj;
             
                     }
-                    
             
                 }
 
             res.setHeader('Content-Type', 'application/json');
             console.log(arr);
             res.send(arr);
-        
     });
-    
     
 });
 
 // Route for recent search queries:
 app.get("/api/recent", function(req, res) {
-    res.send("Recent queries...")
+    
+    // Query database and return 10 most recent entries;
+    MongoClient.connect(url, function(err, db) {
+        
+        if (err) {
+            console.log("Could not connect");
+        }
+        else {
+            db.collection('recent').find().sort({timestamp:1}).toArray(function(err, doc) {
+                
+                if(!err) {
+                    res.send(doc);
+                }
+                
+            });
+        }
+        
+    });
+    
 });
 
 // Catch all for any other route to redirect to homepage:
