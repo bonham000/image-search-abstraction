@@ -15,7 +15,25 @@ body {
 	position: absolute;
 	width: 100vw;
 	height: 100vh;
-	background: rgba(15,15,15,.9);
+	background: rgba(15,15,15,.95);
 	color: rgb(230,230,230);
 	font-family: Avenir;
 }
+.container {
+	padding-left: 30px;
+}
+.title1 {
+	font-size: 50px;
+}
+.title2 {
+	font-size: 30px;
+}
+.subtitle {
+	font-size: 25px;
+	color: rgb(6, 179, 219);
+}
+.rules {
+	font-size: 18px;
+	color: rgb(6, 179, 219);
+}
+
