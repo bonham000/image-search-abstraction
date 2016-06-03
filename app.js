@@ -9,9 +9,9 @@ var app = express();
 
 var MongoClient = mongodb.MongoClient;
 // Local url:
-var url = 'mongodb://localhost:27017/image-search-abstraction';
+//var url = 'mongodb://localhost:27017/image-search-abstraction';
 // mLab hosted url:
-// var url = "mongodb://heroku:heroku123@ds023303.mlab.com:23303/image-search-abstraction";
+var url = "mongodb://heroku:heroku123@ds023303.mlab.com:23303/image-search-abstraction";
 
 // Serve static files:
 app.use(express.static(__dirname + '/public'));

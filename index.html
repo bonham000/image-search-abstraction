@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 
 <head>
-    
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+	<meta charset="UTF-8">
+	<title>Image Search Abstraction Layer</title>
+
+	<link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="public/css/style.css"/>
     
 </head>
 
 <body>
     
-    
-    <div>
+    <div class="content">
         
-        <h1>Image Search Abstraction Layer</h1>
+        <h1>All the Cats, All the Pictures — Free Code Camp Image Search Abstraction Layer</h1>
         
-        <p>Query string example: Http://baseurl.com/api?imagesearch= "Your query here" &offset= "Your offset here"</p>
+        <p>This API tool allows you to submit an image search query and view the results as a JSON object.</p>
+
+        <p>You may also specify the offset (where your results should begin), and view recent search queries.</p>
+
+        <h1>Usage:</h1>
+
+        <p>This submits a search for "fashionable cats" with an offset of 5: <code>https://custom-image-search.herokuapp.com/api?find= fashionable cats &offset= 5</code> </p>
+
+        <p>Alternatively, you may view recent searches this way: <code>https://custom-image-search.herokuapp.com/recent</code></p>
+
+        <p>Any improperly formated queries should redirect you to this page.</p>
+
+        <form id="queryForm">
+        	To make things easier, you can submit your query here:
+        	<input id="query">
+        	Offset:
+        	<input id="offset">
+        	<button id="submit">Submit Query</button>
+        </form>
+
+        <p><a target="_blank" href="https://custom-image-search.herokuapp.com/recent">Or view recent searches here</a></p>
+
+        <p>How does this project work?</p>
+
 
         
     </div>
     
-    <script type="text/javascript" src="/js/index.js"></script>
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script type="text/javascript" src="public/js/index.js"></script>
     
 </body>

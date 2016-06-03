@@ -1,4 +1,21 @@
+html {
+	padding: 0;
+	margin: 0;
+}
 body {
-    background: rgb(45,45,45);
-    color: white;
+    background-image: url('http://i1361.photobucket.com/albums/r662/bonham000/Image%20Search%20Abstraction/cat-camera_zpsbndceeb7.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+    font-family: 'Play', sans-serif;
+}
+
+.content {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(15,15,15,.9);
+	color: rgb(230,230,230);
+	font-family: Avenir;
 }
