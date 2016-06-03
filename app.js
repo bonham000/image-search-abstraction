@@ -9,22 +9,9 @@ var app = express();
 
 var MongoClient = mongodb.MongoClient;
 // Local url:
-// var url = 'mongodb://localhost:27017/image-search-abstraction';
+var url = 'mongodb://localhost:27017/image-search-abstraction';
 // mLab hosted url:
-var url = "mongodb://heroku:heroku123@ds023303.mlab.com:23303/image-search-abstraction";
-
-MongoClient.connect(url, function(err, db) {
-    
-    if (err) {
-        console.log("Unable to connect to the database");
-    }
-    else {
-        console.log("Connection established to " + url);
-        
-        db.close();
-    }
-    
-})
+// var url = "mongodb://heroku:heroku123@ds023303.mlab.com:23303/image-search-abstraction";
 
 // Serve static files:
 app.use(express.static(__dirname + '/public'));
@@ -39,17 +26,54 @@ app.get('/', function(req, res) {
 app.get("/api", function(req, res) {
     
     // Get time at this instance and convert to a date variable;
-    var unix = Math.round(+new Date()/1000);
-    var date = new Date(unix * 1000);
+    var timestamp;
     
-    // Query string example: Http://baseurl.com/api?imagesearch= "Your query here" &offset= "Your offset here"
+    function createTimestamp() {
     
-    var query = req.param('imagesearch');
+        var d = new Date();
+        
+        var hours = d.getHours();
+        var minutes = d.getMinutes();
+        var seconds = d.getSeconds();
+        
+        var date = d.getDate();
+        var month = d.getMonth() + 1;
+        var year = d.getFullYear();
+        
+        if (month === 1) { month = "January" }
+        else if (month === 2)  { month = "February" }
+        else if (month === 3)  { month = "March" }
+        else if (month === 4)  { month = "April" }
+        else if (month === 5)  { month = "May" }
+        else if (month === 6)  { month = "June" }
+        else if (month === 7)  { month = "July" }
+        else if (month === 8)  { month = "August" }
+        else if (month === 9)  { month = "September" }
+        else if (month === 10) { month = "October" }
+        else if (month === 11) { month = "November" }
+        else if (month === 12) { month = "December" }
+        
+        
+        timestamp = month + " " + date + ", " + year + " at " + hours + ":" + minutes + ":" + seconds + " Greenwich Mean Time";    
+        
+    }
+    
+    createTimestamp();
+    
+    // Query string example: Http://baseurl.com/api?find= "Your query here" &offset= "Your offset here"
+    
+    var query = req.param('find');
     var offset = req.param('offset');
-    
+
     if (isNaN(offset)) {
         offset = 1;
     }
+
+    if (query === undefined) {
+        res.sendFile(__dirname + '/index.html');
+    }
+    
+    else {
     
     var arr = [];
     var resultObj = {};
@@ -68,7 +92,7 @@ app.get("/api", function(req, res) {
         else {
             db.collection('recent').insertOne( {
                 "search query" : query,
-                "timestamp" : date
+                "timestamp" : timestamp
             });
         }
         
@@ -95,14 +119,16 @@ app.get("/api", function(req, res) {
                 }
 
             res.setHeader('Content-Type', 'application/json');
-            console.log(arr);
+            console.log("Search completed successfully and entered into the database.");
             res.send(arr);
     });
+    
+    };
     
 });
 
 // Route for recent search queries:
-app.get("/api/recent", function(req, res) {
+app.get("/recent", function(req, res) {
     
     // Query database and return 10 most recent entries;
     MongoClient.connect(url, function(err, db) {
@@ -114,6 +140,11 @@ app.get("/api/recent", function(req, res) {
             db.collection('recent').find().sort({timestamp:1}).toArray(function(err, doc) {
                 
                 if(!err) {
+                    
+                    for (var j = 0; j < doc.length; j++ ) {
+                        delete doc[j]["_id"];
+                    }
+                    
                     res.send(doc);
                 }
                 
@@ -131,6 +162,3 @@ app.get('*', function(req, res) {
   
 app.listen(port);
 console.log("Server is listening on port " + port);
-
-// API_ID: 008924517014194673499%3Atkjerk2whko
-// API_KEY: AIzaSyAk_Xhchp5zIzikREMeAbnNPnyL6bS6sDE
