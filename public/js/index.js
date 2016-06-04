@@ -11,7 +11,7 @@ $("#submit").click(function() {
 
 	console.log(query, offset);
 
-	//window.open("https://custom-image-search.herokuapp.com/api?find=" + query + "&offset=" + offset);
+	window.open("https://custom-image-search.herokuapp.com/api?find=" + query + "&offset=" + offset);
 
 	$("#query").val('');
 	$("#offset").val('');
