@@ -4,8 +4,6 @@
 	<meta charset="UTF-8">
 	<title>Image Search Abstraction Layer</title>
 
-	<link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
-
     <link rel="stylesheet" type="text/css" href="public/css/style.css"/>
     
 </head>
@@ -16,33 +14,64 @@
 
     	<div class="container">
         
-		    <h1 class="title1">All the Cats, All the Pictures</h1>
-		    <h1 class="title2">Free Code Camp Image Search Abstraction Layer</h1>
+		    <h1 class="title1"><i><u>All</u></i> the Cats, <i><u>All</u></i> the Pictures —</h1>
+		    <h1 class="title2"><a target="_blank" href="https://www.freecodecamp.com/challenges/image-search-abstraction-layer">Free Code Camp Image Search Abstraction Layer</a></h1>
 		    
-		    <p class="subtitle">This API tool allows you to submit an image search query and view the results as a JSON object.</p>
+		    <p class="subtitle sub1">This API tool allows you to submit an image search query and view the results as a JSON object.</p>
 
-		    <p class="subtitle">You may also specify the offset (where your results should begin), and view recent search queries.</p>
+		    <p class="subtitle sub2">You may also specify the offset (where your results should begin), and view recent search queries.</p>
 
-		    <h1>Usage:</h1>
+		    <h1 class="title3">Usage:</h1>
 
-		    <p class="rules">This submits a search for "fashionable cats" with an offset of 5: <code>https://custom-image-search.herokuapp.com/api?find= fashionable cats &offset= 5</code> </p>
+		    <p class="rules rule1">Search for "fashionable cats" with an offset of 5: <code><a target="_blank" href="https://custom-image-search.herokuapp.com/api?find=fashionable%20cats&offset=5">https://custom-image-search.herokuapp.com/api?find=fashionable%20cats&offset=5</a></code></p>
 
-		    <p class="rules">Alternatively, you may view recent searches this way: <a target="_blank" href="https://custom-image-search.herokuapp.com/recent"><code>https://custom-image-search.herokuapp.com/recent</code></a></p>
+		    <p class="rules rule2">View recent searches this way: <a target="_blank" href="https://custom-image-search.herokuapp.com/recent"><code>https://custom-image-search.herokuapp.com/recent</code></a></p>
 
-		    <p class="rules">Any improperly formated queries should redirect you to this page.</p>
+		    <p class="rules rule3">You may include spaces in your search and specifying the offset is optional (the default is 1). Any invalid queries return here. <i>Now search for all the cat pictures.</i></p>
 
-		    <form id="queryForm">
-		    	To make things easier, you can submit your query here:
-		    	<input id="query">
+			<p class="rules rule4 formTitle">To make things easier, you can submit your query here:</p>
+
+		    <form class="formElem" id="queryForm">
+		    	Query:
+		    	<input autocomplete="off" placeholder="fashionable cats" id="query">
 		    	Offset:
-		    	<input id="offset">
+		    	<select id="offset">
+		    		<option value="1">1</option>
+		    		<option value="2">2</option>
+		    		<option value="3">3</option>
+		    		<option value="4">4</option>
+		    		<option selected="selected" value="5">5</option>
+		    		<option value="6">6</option>
+		    		<option value="7">7</option>
+		    		<option value="8">8</option>
+		    		<option value="9">9</option>
+		    		<option value="10">10</option>
+		    	</select>
 		    	<button id="submit">Submit Query</button>
 		    </form>
 
-		    <p>How does this project work?</p>
+		    <p class="details"><span class="spanLeft"><a id="showDetails" href="#!">How does this project works</a></span><span class="spanRight">Built by <a target="_blank" href="http://sean-smith.me">Sean Smith</a></span></p>
 
     	</div>
         
+    </div>
+
+    <div class="explanation">
+    	
+    	<div class="infoBox">
+
+    		<h3 class="explainTitle">This tool was built with Node.js Express.js, MongoDB and Google's Custom Search Engine API.</h3>
+
+    		<p class="info">Search queries are parsed and then a request is made to Google's servers, which returns a JSON object. Certain elements from this response are then returned to the user.</p>
+
+    		<p class="info">Each user query also gets stored in a MongoDB database with a timestamp recording when it is executed, which allows users to view recent searches.</p>
+
+    		<p class="info">The application is hosted with Heroku, and the database is hosted by mLab.</p>
+
+    		<p class="info" id="close"><a href="#!">Return to Application</a></p>
+
+    	</div>
+
     </div>
     
     <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>

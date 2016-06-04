@@ -6,16 +6,17 @@ body {
     background-image: url('http://i1361.photobucket.com/albums/r662/bonham000/Image%20Search%20Abstraction/cat-camera_zpsbndceeb7.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     padding: 0;
     margin: 0;
-    font-family: 'Play', sans-serif;
+    min-height: 700px;
 }
-
 .content {
 	position: absolute;
 	width: 100vw;
-	height: 100vh;
-	background: rgba(15,15,15,.95);
+	min-height: 100vh;
+	height: auto;
+	background: rgba(15,15,15,.87);
 	color: rgb(230,230,230);
 	font-family: Avenir;
 }
@@ -24,16 +25,175 @@ body {
 }
 .title1 {
 	font-size: 50px;
+	margin-bottom: -15px;
+	margin-top: 25px;
+	color: rgb(200,200,200);
 }
 .title2 {
 	font-size: 30px;
+	color: rgb(150,150,150);
+}
+.title3 {
+	margin-top: 65px;
+	color: rgb(150,150,150);
 }
 .subtitle {
 	font-size: 25px;
 	color: rgb(6, 179, 219);
 }
+.sub1 {
+	margin-bottom: -25px;
+	margin-top: -10px;
+}
 .rules {
 	font-size: 18px;
 	color: rgb(6, 179, 219);
 }
+.rule1 {
+	margin-top: -10px;
+}
+.rule2 {
+	margin-top: -5px;
+}
+.rule3 {
+	margin-top: -5px;
+}
+.rule4 {
+	margin-top: 55px;
+	font-size: 25px;
+	color: white;
+}
+.formElem {
+	margin-top: -20px;
+	font-size: 25px;
+}
+.formTitle {
+	margin-bottom: 25px;
+	color: rgb(150,150,150);
+}
+input {
+	border-radius: 5px;
+	background: transparent;
+	border: 1px solid white;
+	padding-bottom: -15px;
+	padding-top: 3px;
+	height: 25px;
+}
+input, select{
+	font-size: 18px;
+	color: white;
+	padding-left: 15px;
+}
+input:focus, select:focus {
+	outline: none;
+}
+input:hover, select:hover {
+	color: rgb(252, 59, 69);
+	border: 1px solid rgb(252, 59, 69);
+}
+#query {
+	width: 250px;
+	padding-left: 5px;
+}
+select {
+    border: 1px solid white;
+    color: #FFFFFF;
+    background: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    height: 30px;
+    padding: 5px 10px;
+}
+input:focus {
+	border: 1px solid rgb(252, 59, 69);
+}
+button {
+	font-size: 20px;
+	border-radius: 5px;
+	background: transparent;
+	border: 1px solid white;
+	color: white;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+button:hover {
+	color: rgb(252, 59, 69);
+	border: 1px solid rgb(252, 59, 69);
+	cursor: pointer;
+}
+button:focus {
+	outline: none;
+}
+code {
+	background: rgb(220,220,220);
+	color: rgb(228, 0, 11);
+	padding: 4px 4px;
+	border-radius: 5px;
+}
+code:hover {
+	background: rgb(40,40,40);
+	color: rgb(252, 59, 69);
+}
+.rules a, .rules a:visited {
+	text-decoration: none;
+	color: rgb(228, 0, 11);
+
+}
+.details {
+	margin-top: 125px;
+	color: rgb(150,150,150);
+}
+.details a, .details a:visited,
+.title2 a, .title2 a:visited {
+	color: rgb(150,150,150);
+}
+.title2 a, .title2 a:visited {
+	color: rgb(150,150,150);
+	text-decoration: none;
+}
+.details a:hover,
+.title2 a:hover {
+	color: rgb(252, 59, 69);
+	text-decoration: underline;
+}
+.spanRight {
+	float: right;
+	margin-right: 25px;
+}
+
+.explanation {
+	display: none;
+	position: absolute;
+	width: 100vw;
+	min-height: 100vh;
+	height: auto;
+	background: rgba(252, 59, 69, 0.95);
+	color: rgb(30,30,30);
+	font-family: Avenir;
+	z-index: 5;
+}
+.infoBox {
+	width: 1000px;
+	text-align: center;
+	margin: 100px auto;
+}
+.explainTitle {
+	font-size: 30px;
+	width: 750px;
+	margin: 0 auto;
+}
+.info {
+	font-size: 25px;
+}
+.info a, .info a:visited {
+	color: rgb(86, 17, 141);
+}
+.info a:hover {
+	color: white;
+}
+
+
+
 

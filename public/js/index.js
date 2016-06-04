@@ -17,3 +17,11 @@ $("#submit").click(function() {
 	$("#offset").val('');
 
 });
+
+$("#showDetails").click(function() {
+	$('.explanation').show(400);
+});
+
+$("#close").click(function() {
+	$('.explanation').hide(400);
+});
