@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Image Search Abstraction Layer</title>
 
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="public/css/style.css"/>
     
 </head>
 
@@ -14,7 +14,7 @@
 
     	<div class="container">
         
-		    <h1 class="title1"><i><u>All</u></i> the Cats, <i><u>All</u></i> the Pictures —</h1>
+		    <h1 class="title1"><span class="fancy">All</span> the Cats, <span class="fancy">All</span> the Pictures —</h1>
 		    <h1 class="title2"><a target="_blank" href="https://www.freecodecamp.com/challenges/image-search-abstraction-layer">Free Code Camp Image Search Abstraction Layer</a></h1>
 		    
 		    <p class="subtitle sub1">This API tool allows you to submit an image search query and view the results as a JSON object.</p>
@@ -36,7 +36,7 @@
 		    	<input autocomplete="off" placeholder="fashionable cats" id="query">
 		    	Offset:
 		    	<select id="offset">
-		    		<option value="1">1</option>
+		    		<option value="1">1</option>s
 		    		<option value="2">2</option>
 		    		<option value="3">3</option>
 		    		<option value="4">4</option>
@@ -50,7 +50,8 @@
 		    	<button id="submit">Submit Query</button>
 		    </form>
 
-		    <p class="details"><span class="spanLeft"><a id="showDetails" href="#!">How does this project works</a></span><span class="spanRight">Built by <a target="_blank" href="http://sean-smith.me">Sean Smith</a></span></p>
+		    <p class="details"><span class="spanLeft"><a id="showDetails" href="#!">How does this project works</a></span></p>
+		    <p class="details spanRight">Built by <a target="_blank" href="http://sean-smith.me">Sean Smith</a></p>
 
     	</div>
         
@@ -62,19 +63,19 @@
 
     		<h3 class="explainTitle">This tool was built with Node.js Express.js, MongoDB and Google's Custom Search Engine API.</h3>
 
-    		<p class="info">Search queries are parsed and then a request is made to Google's servers, which returns a JSON object. Certain elements from this response are then returned to the user.</p>
+    		<p class="info">Search queries are parsed and then a request is made to Google's servers, which returns a JSON object. Certain elements from this response are then returned to the user.<br><span class="note">(Note: I would recommended using a JSON parser Chrome plugin <a target="_blank" href="https://github.com/callumlocke/json-formatter">like this one</a> to view the page output.)</span></p>
 
     		<p class="info">Each user query also gets stored in a MongoDB database with a timestamp recording when it is executed, which allows users to view recent searches.</p>
 
     		<p class="info">The application is hosted with Heroku, and the database is hosted by mLab.</p>
 
-    		<p class="info" id="close"><a href="#!">Return to Application</a></p>
+    		<p class="close" id="close"><a href="#!">Return to Application</a></p>
 
     	</div>
 
     </div>
     
     <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-    <script type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript" src="public/js/index.js"></script>
     
 </body>

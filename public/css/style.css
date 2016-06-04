@@ -23,6 +23,11 @@ body {
 .container {
 	padding-left: 30px;
 }
+.fancy {
+	text-decoration: underline;
+	font-style: italic;
+	color: rgb(252, 59, 69);
+}
 .title1 {
 	font-size: 50px;
 	margin-bottom: -15px;
@@ -142,7 +147,8 @@ code:hover {
 
 }
 .details {
-	margin-top: 125px;
+	position: absolute;
+	bottom: 15px;
 	color: rgb(150,150,150);
 }
 .details a, .details a:visited,
@@ -159,10 +165,8 @@ code:hover {
 	text-decoration: underline;
 }
 .spanRight {
-	float: right;
-	margin-right: 25px;
+	right: 35px;
 }
-
 .explanation {
 	display: none;
 	position: absolute;
@@ -187,10 +191,18 @@ code:hover {
 .info {
 	font-size: 25px;
 }
-.info a, .info a:visited {
+.note {
+	font-size: 16px;
+}
+.close {
+	font-size: 40px;
+	margin-top: -10px;
+}
+.close a, .close a:visited
+.note a, .note a:visited {
 	color: rgb(86, 17, 141);
 }
-.info a:hover {
+.close a:hover, .note a:hover {
 	color: white;
 }
 
