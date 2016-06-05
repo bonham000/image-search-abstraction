@@ -137,7 +137,8 @@ app.get("/recent", function(req, res) {
             console.log("Could not connect");
         }
         else {
-            db.collection('recent').find().sort({timestamp:1}).toArray(function(err, doc) {
+            db.collection('recent').find().toArray(function(err, doc) {
+            // db.collection('recent').find().sort({timestamp:1}).toArray(function(err, doc) {
                 
                 if(!err) {
                     
@@ -145,7 +146,10 @@ app.get("/recent", function(req, res) {
                         delete doc[j]["_id"];
                     }
                     
-                    res.send(doc);
+                    var reverse = doc.reverse();
+                    var listed  = reverse.slice(0, 10);
+                    
+                    res.send(listed);
                 }
                 
             });
