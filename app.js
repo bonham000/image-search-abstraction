@@ -138,8 +138,7 @@ app.get("/recent", function(req, res) {
         }
         else {
             db.collection('recent').find().toArray(function(err, doc) {
-            // db.collection('recent').find().sort({timestamp:1}).toArray(function(err, doc) {
-                
+
                 if(!err) {
                     
                     for (var j = 0; j < doc.length; j++ ) {
