@@ -18,7 +18,7 @@ body {
 	height: auto;
 	background: rgba(15,15,15,.87);
 	color: rgb(230,230,230);
-	font-family: Avenir;
+	font-family: 'Rubik', sans-serif;
 }
 .container {
 	padding-left: 30px;
@@ -175,7 +175,7 @@ code:hover {
 	height: auto;
 	background: rgba(252, 59, 69, 0.95);
 	color: rgb(30,30,30);
-	font-family: Avenir;
+	font-family: 'Cabin', serif;
 	z-index: 5;
 }
 .infoBox {
